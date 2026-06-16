@@ -1,13 +1,35 @@
-const myPromise= new Promise((resolve, reject) => {
-    setTimeout(()=>{
-        resolve("টাকা পেয়েছি!");
-    },2000)
-})
+console.log("1. কাজ শুরু");
 
-myPromise.then((result)=>{
-    console.log(result);
-}).catch((error)=>{
-    console.log(error);
-})
+const promise = new Promise((resolve, reject) => {
+  setTimeout(() => {
+    resolve("3. Promise সফল!");
+  }, 2000);
+});
 
-console.log("Promise এর জন্য অপেক্ষা না করে কাজ চলছে...");
+promise.then((result) => {
+  console.log(result);
+});
+
+console.log("2. অন্য কাজ চলছে...");
+
+/**
+ * Async/Await
+ */
+
+function fetchUser(id){
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      if(id>0){
+        resolve({id:id,name:"sahin",email:"sahinweb@proton.me",city:"Sunamganj"})
+      }else{
+        reject("Invalid User ID")
+      }
+    }, 2000);
+  })
+}
+
+fetchUser(1)
+  .then((user) => {
+    console.log(user);
+  })
+  .catch((error) => console.error(error));

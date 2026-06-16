@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Promise and Async/await</title>
+  </head>
+  <body>
+    <section class="article">
+      <h2>Real Life থেকে শুরু করি</h2>
+
+      <p>তুমি তোমার বন্ধুকে বললে —</p>
+
+      <blockquote>
+        <p>"ভাই, ৫০০ টাকা দরকার।"</p>
+      </blockquote>
+
+      <p>বন্ধু বললো —</p>
+
+      <blockquote>
+        <p>"এখন নেই, কাল দেব।"</p>
+      </blockquote>
+
+      <p>
+        এটাই <strong>Promise</strong>।<br />
+        বন্ধু এখনই টাকা দিতে পারেনি,<br />
+        কিন্তু একটা প্রতিশ্রুতি দিয়েছে।<br />
+        কাল হয় টাকা দেবে — অথবা বলবে
+        <strong>"দিতে পারব না"</strong>।
+      </p>
+
+      <h2>JavaScript এ একই ঘটনা</h2>
+
+      <p>
+        তুমি server কে বললে — <strong>"user এর data দাও"</strong><br />
+        Server বললো — <strong>"এখন দিতে পারব না, একটু সময় লাগবে"</strong><br />
+        Server একটা <strong>Promise</strong> দিলো।<br /><br />
+
+        কিছুক্ষণ পরে হয় data আসবে — অথবা error আসবে।
+      </p>
+
+      <h2>Promise এর ভেতরে কী আছে</h2>
+
+      <pre><code class="language-javascript">const promise = new Promise((resolve, reject) => {
+    // এখানে async কাজ হয়
+
+    // কাজ সফল হলে
+    resolve("সফল!");
+
+    // কাজ ব্যর্থ হলে
+    reject("ব্যর্থ!");
+});</code></pre>
+
+      <ul>
+        <li><strong>resolve</strong> → বন্ধু টাকা দিলো ✅</li>
+        <li><strong>reject</strong> → বন্ধু বললো "দিতে পারব না" ❌</li>
+      </ul>
+
+      <h2>তিনটা অবস্থা</h2>
+
+      <ul>
+        <li><strong>Pending</strong> → বন্ধু এখনো সিদ্ধান্ত নেয়নি ⏳</li>
+        <li><strong>Resolved</strong> → বন্ধু টাকা দিলো ✅</li>
+        <li><strong>Rejected</strong> → বন্ধু দিতে পারলো না ❌</li>
+      </ul>
+
+      <h2>এখন সবচেয়ে Simple Example</h2>
+
+      <pre><code class="language-javascript">// একটা Promise বানালাম
+const myPromise = new Promise((resolve, reject) => {
+    setTimeout(() => {
+        resolve("টাকা পেয়েছি!"); // ২ সেকেন্ড পরে সফল
+    }, 2000);
+});
+
+// Promise এর result নিচ্ছি
+myPromise.then((result) => {
+    console.log(result); // "টাকা পেয়েছি!"
+});
+
+console.log("Promise এর জন্য অপেক্ষা না করে কাজ চলছে...");</code></pre>
+
+      <h3>Output —</h3>
+
+      <pre><code>Promise এর জন্য অপেক্ষা না করে কাজ চলছে...
+
+(২ সেকেন্ড পরে...)
+
+টাকা পেয়েছি!</code></pre>
+
+      <p>
+        <strong>JS থেমে থাকেনি — অন্য কাজ করেছে।</strong>
+      </p>
+
+      <h2>.then() আর .catch() কী</h2>
+
+      <pre><code class="language-javascript">myPromise
+    .then((result) => {
+        // resolve হলে এখানে আসবে
+        console.log("সফল:", result);
+    })
+    .catch((error) => {
+        // reject হলে এখানে আসবে
+        console.log("ব্যর্থ:", error);
+    });</code></pre>
+
+      <ul>
+        <li><strong>.then()</strong> → বন্ধু টাকা দিলে কী করব</li>
+        <li><strong>.catch()</strong> → বন্ধু না দিলে কী করব</li>
+      </ul>
+
+      <h2>এখন Browser Console এ এটা Run করো</h2>
+
+      <pre><code class="language-javascript">console.log("1. কাজ শুরু");
+
+const promise = new Promise((resolve, reject) => {
+    setTimeout(() => {
+        resolve("3. Promise সফল!");
+    }, 2000);
+});
+
+promise.then((result) => {
+    console.log(result);
+});
+
+console.log("2. অন্য কাজ চলছে...");</code></pre>
+    </section>
+    <script src="/Day-5/promise.js" />
+  </body>
+</html>

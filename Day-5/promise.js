@@ -1,13 +1,13 @@
-const myPromise= new Promise((resolve, reject) => {
-    setTimeout(()=>{
-        resolve("টাকা পেয়েছি!");
-    },2000)
-})
+console.log("1. কাজ শুরু");
 
-myPromise.then((result)=>{
-    console.log(result);
-}).catch((error)=>{
-    console.log(error);
-})
+const promise = new Promise((resolve, reject) => {
+  setTimeout(() => {
+    resolve("3. Promise সফল!");
+  }, 2000);
+});
 
-console.log("Promise এর জন্য অপেক্ষা না করে কাজ চলছে...");
+promise.then((result) => {
+  console.log(result);
+});
+
+console.log("2. অন্য কাজ চলছে...");

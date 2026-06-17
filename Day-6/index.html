@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>OOP (Object Oriented programming)</title>
+  </head>
+  <body>
+    <section class="article">
+      <h2>ঠিক আছে! একদম real life থেকে বুঝাই। 🎯</h2>
+
+      <hr />
+
+      <h2>চিন্তা করো তুমি একটা Factory বানাচ্ছ</h2>
+
+      <p>তুমি <strong>ফোন বানানোর factory</strong> দিলে।</p>
+
+      <p>Factory তে একটা <strong>ছাঁচ</strong> আছে —</p>
+
+      <pre><code>প্রতিটা ফোনে থাকবে:
+- brand name
+- color
+- battery
+- call() করার ক্ষমতা
+- charge() করার ক্ষমতা</code></pre>
+
+      <p>
+        এই ছাঁচটাই হলো <strong>Class</strong>।<br /><br />
+
+        ছাঁচ থেকে যতগুলো ফোন বানাও — প্রতিটাই <strong>Object</strong>।
+      </p>
+
+      <pre><code>ছাঁচ (Class)     → Phone
+বানানো ফোন ১     → nokia  = new Phone("Nokia", "black")
+বানানো ফোন ২     → samsung = new Phone("Samsung", "white")</code></pre>
+
+      <hr />
+
+      <h2>এখন Code এ দেখো</h2>
+
+      <pre><code class="language-javascript">// এটা ছাঁচ — কোনো real ফোন না
+class Phone {
+
+    // factory তে ফোন বানানোর মুহূর্ত
+    constructor(brand, color) {
+        this.brand = brand;   // এই ফোনের brand
+        this.color = color;   // এই ফোনের color
+        this.battery = 100;   // সব ফোন শুরুতে 100%
+    }
+
+    // ফোনের ক্ষমতা
+    call(number) {
+        console.log(`${this.brand} is calling ${number}`);
+    }
+
+    charge() {
+        this.battery = 100;
+        console.log(`${this.brand} is fully charged!`);
+    }
+}</code></pre>
+
+      <hr />
+
+      <h2><code>this</code> কী?</h2>
+
+      <p>এটাই সবচেয়ে confusing জিনিস।</p>
+
+      <pre><code class="language-javascript">const nokia = new Phone("Nokia", "black");
+const samsung = new Phone("Samsung", "white");
+
+nokia.call("01700000000");
+// Nokia is calling 01700000000
+
+samsung.call("01800000000");
+// Samsung is calling 01800000000</code></pre>
+
+      <p>
+        <code>this</code> মানে —
+        <strong>"যে object এই moment এ কাজ করছে সে নিজে।"</strong>
+      </p>
+
+      <pre><code>nokia.call()   → this = nokia
+samsung.call() → this = samsung</code></pre>
+
+      <p>একই method — কিন্তু <code>this</code> আলাদা। 🎯</p>
+
+      <hr />
+
+      <h2><code>constructor</code> কী?</h2>
+
+      <pre><code class="language-javascript">const nokia = new Phone("Nokia", "black");
+//                       ↑        ↑
+//                    brand     color</code></pre>
+
+      <p>
+        <code>new Phone(...)</code> লিখলে
+        <strong>constructor</strong> automatically চলে।
+      </p>
+
+      <pre><code class="language-javascript">constructor(brand, color) {
+    this.brand = brand; // nokia.brand = "Nokia"
+    this.color = color; // nokia.color = "black"
+    this.battery = 100; // nokia.battery = 100
+}</code></pre>
+
+      <p>
+        Constructor মানে —
+        <strong>"ফোন বানানোর মুহূর্তে কী কী set করতে হবে।"</strong>
+      </p>
+
+      <hr />
+
+      <h2><code>new</code> কী করে?</h2>
+
+      <pre><code class="language-javascript">const nokia = new Phone("Nokia", "black");</code></pre>
+
+      <p><code>new</code> লিখলে JS তিনটা কাজ করে —</p>
+
+      <pre><code>1. একটা নতুন খালি object তৈরি করে {}
+2. constructor চালায় — property set করে
+3. সেই object return করে</code></pre>
+
+      <hr />
+
+      <h2>পুরো ছবিটা একসাথে</h2>
+
+      <pre><code class="language-javascript">class Phone {                          // ছাঁচ
+    constructor(brand, color) {        // বানানোর নিয়ম
+        this.brand = brand;            // এই ফোনের brand
+        this.color = color;            // এই ফোনের color
+        this.battery = 100;
+    }
+
+    call(number) {                     // ফোনের ক্ষমতা
+        console.log(`${this.brand} calling ${number}`);
+    }
+}
+
+// ছাঁচ থেকে দুটো আলাদা ফোন বানালাম
+const nokia   = new Phone("Nokia", "black");
+const samsung = new Phone("Samsung", "white");
+
+// দুটো আলাদা — কিন্তু একই ছাঁচ থেকে
+nokia.call("017...");    // Nokia calling 017...
+samsung.call("018...");  // Samsung calling 018...</code></pre>
+
+      <hr />
+
+      <h2>এখন তোমার মাথায় যা থাকবে</h2>
+
+      <pre><code>Class       → ছাঁচ / blueprint
+constructor → বানানোর মুহূর্তে চলে
+this        → এই specific object নিজে
+new         → ছাঁচ থেকে object বানায়
+method      → object এর ক্ষমতা
+property    → object এর তথ্য</code></pre>
+
+      <hr />
+
+      <h2>এখন browser console এ এটা run করো —</h2>
+
+      <pre><code class="language-javascript">class Phone {
+    constructor(brand, color) {
+        this.brand = brand;
+        this.color = color;
+        this.battery = 100;
+    }
+
+    call(number) {
+        console.log(`${this.brand} is calling ${number}`);
+    }
+}
+
+const nokia = new Phone("Nokia", "black");
+const samsung = new Phone("Samsung", "white");
+
+console.log(nokia);
+console.log(samsung);
+
+nokia.call("01700000000");
+samsung.call("01800000000");</code></pre>
+
+      <p>নিজের চোখে দেখো — তারপর বলো clear হয়েছে কিনা। 👀</p>
+    </section>
+    <!-- <script src="/Day-6/oop.js" /> -->
+    <script src="/Day-6/oopExplained.js" />
+  </body>
+</html>

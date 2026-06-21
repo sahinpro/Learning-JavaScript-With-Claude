@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./display/style.css" />
+    <title>Calculator</title>
+  </head>
+
+  <body>
+    <div class="calculator-app">
+      <!-- Calculator -->
+      <section id="calculator" class="calculator">
+        <!-- Display -->
+        <section id="displaySection" class="calculator-display">
+          <div id="previousOperation" class="display-operation">
+            (2495 × 3) + 6615
+          </div>
+
+          <div id="currentResult" class="display-result">= 14,100</div>
+        </section>
+
+        <!-- Divider -->
+        <div class="calculator-divider"></div>
+
+        <!-- Keypad -->
+        <section id="calculatorKeypad" class="calculator-keypad">
+          <!-- Row 1 -->
+
+          <button id="clearBtn" class="btn btn--action btn--danger">AC</button>
+
+          <button id="parenthesesBtn" class="btn btn--operator">( )</button>
+
+          <button id="percentBtn" class="btn btn--operator">%</button>
+
+          <button id="divideBtn" class="btn btn--operator">÷</button>
+
+          <!-- Row 2 -->
+
+          <button id="num1" class="btn btn--number">1</button>
+
+          <button id="num2" class="btn btn--number">2</button>
+
+          <button id="num3" class="btn btn--number">3</button>
+
+          <button id="multiplyBtn" class="btn btn--operator">×</button>
+
+          <!-- Row 3 -->
+
+          <button id="num4" class="btn btn--number">4</button>
+
+          <button id="num5" class="btn btn--number">5</button>
+
+          <button id="num6" class="btn btn--number">6</button>
+
+          <button id="addBtn" class="btn btn--operator">+</button>
+
+          <!-- Row 4 -->
+
+          <button id="num7" class="btn btn--number">7</button>
+
+          <button id="num8" class="btn btn--number">8</button>
+
+          <button id="num9" class="btn btn--number">9</button>
+
+          <button id="subtractBtn" class="btn btn--operator">−</button>
+
+          <!-- Row 5 -->
+
+          <button id="decimalBtn" class="btn btn--number">.</button>
+
+          <button id="num0" class="btn btn--number">0</button>
+
+          <button id="deleteBtn" class="btn btn--action">⌫</button>
+
+          <button id="equalsBtn" class="btn btn--equals">=</button>
+        </section>
+      </section>
+    </div>
+    <script type="module" src="./display//button.js" />
+  </body>
+</html>

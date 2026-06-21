@@ -1,0 +1,329 @@
+.display-result {
+  font-size: 3.5rem;
+  font-weight: 700;
+}
+/* =========================
+   RESET
+========================= */
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+button {
+  border: none;
+  outline: none;
+  cursor: pointer;
+  background: transparent;
+  font: inherit;
+}
+
+body {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  font-family: Inter, sans-serif;
+  background: #ececec;
+}
+
+/* =========================
+   VARIABLES
+========================= */
+
+:root {
+  --bg: #ececec;
+
+  --card-bg: #ececec;
+
+  --text-primary: #222;
+  --text-secondary: #666;
+
+  --btn-bg: #ececec;
+
+  --shadow-light: #ffffff;
+  --shadow-dark: #c8c8c8;
+
+  --accent: #ff3b30;
+
+  --radius: 24px;
+}
+
+/* =========================
+   CALCULATOR
+========================= */
+
+.calculator {
+  width: 360px;
+
+  padding: 24px;
+
+  border-radius: 32px;
+
+  background: var(--card-bg);
+
+  box-shadow:
+    20px 20px 40px rgba(0, 0, 0, 0.12),
+    -10px -10px 30px rgba(255, 255, 255, 0.9);
+}
+
+/* =========================
+   HEADER
+========================= */
+
+.calculator-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  margin-bottom: 60px;
+}
+
+.icon-btn {
+  width: 36px;
+  height: 36px;
+
+  border-radius: 50%;
+
+  display: grid;
+  place-items: center;
+
+  color: var(--text-secondary);
+}
+
+.theme-switch {
+  position: relative;
+}
+
+.theme-switch-input {
+  display: none;
+}
+
+.theme-switch-label {
+  width: 64px;
+  height: 30px;
+
+  background: var(--accent);
+
+  border-radius: 999px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding-inline: 8px;
+
+  position: relative;
+}
+
+.theme-switch-label::after {
+  content: "";
+
+  position: absolute;
+
+  width: 24px;
+  height: 24px;
+
+  background: white;
+
+  border-radius: 50%;
+
+  left: 4px;
+
+  transition: 0.3s;
+}
+
+.theme-switch-input:checked + .theme-switch-label::after {
+  left: 36px;
+}
+
+/* =========================
+   DISPLAY
+========================= */
+
+.calculator-display {
+  text-align: right;
+
+  min-height: 120px;
+  background-color: white;
+  border-radius: 20px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.display-operation {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  margin-bottom: 10px;
+}
+
+.display-result {
+  font-size: 3rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+/* =========================
+   DIVIDER
+========================= */
+
+.calculator-divider {
+  width: 70px;
+  height: 4px;
+
+  margin: 10px auto 30px;
+  border-radius: 999px;
+  background: #b5bcc5;
+}
+
+/* =========================
+   KEYPAD
+========================= */
+
+.calculator-keypad {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+}
+
+/* =========================
+   BUTTON BASE
+========================= */
+
+.btn {
+  width: 68px;
+  height: 68px;
+
+  border-radius: 18px;
+
+  font-size: 1.7rem;
+  font-weight: 500;
+
+  color: var(--text-primary);
+
+  background: var(--btn-bg);
+
+  box-shadow:
+    8px 8px 16px var(--shadow-dark),
+    -8px -8px 16px var(--shadow-light);
+
+  transition: 0.2s;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+.btn:active {
+  box-shadow:
+    inset 4px 4px 8px rgba(0, 0, 0, 0.12),
+    inset -4px -4px 8px rgba(255, 255, 255, 0.8);
+
+  transform: scale(0.96);
+}
+
+/* =========================
+   NUMBER
+========================= */
+
+.btn--number {
+  color: #222;
+}
+
+/* =========================
+   OPERATORS
+========================= */
+
+.btn--operator {
+  color: var(--accent);
+}
+
+/* =========================
+   AC BUTTON
+========================= */
+
+.btn--danger {
+  color: var(--accent);
+}
+
+/* =========================
+   DELETE BUTTON
+========================= */
+
+#deleteBtn {
+  font-size: 1.4rem;
+}
+
+/* =========================
+   EQUALS BUTTON
+========================= */
+
+.btn--equals {
+  color: white;
+
+  background: var(--accent);
+
+  box-shadow:
+    0 0 12px rgba(255, 59, 48, 0.4),
+    0 0 25px rgba(255, 59, 48, 0.3);
+}
+
+.btn--equals:hover {
+  transform: translateY(-2px);
+}
+
+.btn--equals:active {
+  transform: scale(0.95);
+}
+
+/* =========================
+   DARK MODE
+========================= */
+
+body.dark {
+  background: #232a34;
+}
+
+body.dark .calculator {
+  background: #2d3540;
+
+  box-shadow:
+    12px 12px 24px rgba(0, 0, 0, 0.45),
+    -12px -12px 24px rgba(255, 255, 255, 0.04);
+}
+
+body.dark .btn {
+  background: #313b47;
+
+  color: #d8dde5;
+
+  box-shadow:
+    8px 8px 16px rgba(0, 0, 0, 0.4),
+    -8px -8px 16px rgba(255, 255, 255, 0.03);
+}
+
+body.dark .display-result {
+  color: white;
+}
+
+body.dark .display-operation {
+  color: #9aa3af;
+}
+
+body.dark .calculator-divider {
+  background: #717b87;
+}
+
+body.dark .btn--operator,
+body.dark .btn--danger {
+  color: var(--accent);
+}
+
+body.dark .btn--equals {
+  color: white;
+}
